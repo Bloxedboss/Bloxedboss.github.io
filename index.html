@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -244,6 +245,7 @@ footer {
   }
 }
 </style>
+
 </head>
 
 <body>
@@ -278,9 +280,12 @@ footer {
       placeholder="Search projects..."
     >
 
-    <button onclick="filterProjects()">
-      Search
-    </button>
+```
+<button onclick="filterProjects()">
+  Search
+</button>
+```
+
   </div>
 
 </section>
@@ -294,19 +299,20 @@ footer {
 
   <div class="filters">
 
-    <button
-      class="filter active"
-      onclick="setCategory('All', this)"
-    >
-      All
-    </button>
+```
+<button
+  class="filter active"
+  onclick="setCategory('All', this)"
+>
+  All
+</button>
 
-    <button
-      class="filter"
-      onclick="setCategory('Word', this)"
-    >
-      📝 Word
-    </button>
+<button
+  class="filter"
+  onclick="setCategory('Word', this)"
+>
+  📝 Word
+</button>
 
 <button
   class="filter"
@@ -315,29 +321,27 @@ footer {
   📕 PDF
 </button>
 
-    <button
+<button
   class="filter"
   onclick="setCategory('Fonts', this)"
 >
   🔤 Fonts
 </button>
-    
-    <button
-      class="filter"
-      onclick="setCategory('Excel', this)"
-    >
-      
-},
-      
-      📊 Excel
-    </button>
 
-    <button
-      class="filter"
-      onclick="setCategory('PowerPoint', this)"
-    >
-      🎞️ PowerPoint
-    </button>
+<button
+  class="filter"
+  onclick="setCategory('Excel', this)"
+>
+  📊 Excel
+</button>
+
+<button
+  class="filter"
+  onclick="setCategory('PowerPoint', this)"
+>
+  🎞️ PowerPoint
+</button>
+```
 
   </div>
 
@@ -355,48 +359,47 @@ footer {
 
 <script>
 
-const projects = [{
-  name: "Awanzaman Light",
-  category: "Fonts",
-  icon: "🔤",
-  description: "Awanzaman Light font available for download.",
-  file: "Awanzaman Light.ttf"
-},
+const projects = [
 
-{
-  name: "Commercial Script",
-  category: "Fonts",
-  icon: "✒️",
-  description: "Commercial Script font available for download.",
-  file: "CommercialScriptComRegular.TTF"
-},
-
-{
-  name: "Unitext Regular",
-  category: "Fonts",
-  icon: "🔤",
-  description: "Unitext Regular font available for download.",
-  file: "Unitext-Regular.ttf"
-},
   {
-  name:"The Smart School Logo PDF",
-  category:"PDF",
-  icon:"📕",
-  description:"A high-quality PDF version of The Smart School logo, featuring the official school branding and tagline. Perfect for educational projects, presentations, and school-related designs.",
-  file:"The Smart School Logo.pdf"
-},
+    name: "Awanzaman Light",
+    category: "Fonts",
+    icon: "🔤",
+    description: "Awanzaman Light font available for download.",
+    file: "Awanzaman Light.ttf"
+  },
+
+  {
+    name: "Commercial Script",
+    category: "Fonts",
+    icon: "✒️",
+    description: "Commercial Script font available for download.",
+    file: "CommercialScriptComRegular.TTF"
+  },
+
+  {
+    name: "Unitext Regular",
+    category: "Fonts",
+    icon: "🔤",
+    description: "Unitext Regular font available for download.",
+    file: "Unitext-Regular.ttf"
+  },
+
+  {
+    name: "The Smart School Logo PDF",
+    category: "PDF",
+    icon: "📕",
+    description: "A high-quality PDF version of The Smart School logo, featuring the official school branding and tagline. Perfect for educational projects, presentations, and school-related designs.",
+    file: "The Smart School Logo.pdf"
+  },
 
   {
     name: "Designing The Smart School Logo Using Microsoft Word",
-
     category: "Word",
-
     icon: "🏆",
-
     description: `The Smart School Logo is a creative project that I designed using Microsoft Word. This project demonstrates how MS Word can be used not only for writing documents but also for creating attractive and professional designs.
 
-I carefully used Shapes, Text Boxes, Lines, Colors, Fonts, and WordArt to recreate the logo while maintaining a clean and balanced appearance.
-
+I carefully used Shapes, Text Boxes, Lines, Colors, Fonts, and WordArt to recreate the logo while maintaining a clean and balanced appearance.`,
     file: "The Smart School Logo.docx"
   }
 
