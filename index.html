@@ -1,11 +1,11 @@
 ```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProjectVault | My Projects</title>
+
+<title>Silent_Aura | My Projects</title>
 
 <style>
 * {
@@ -14,219 +14,630 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #080b16;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(105, 45, 220, 0.15), transparent 30%),
+    radial-gradient(circle at 20% 30%, rgba(45, 90, 220, 0.10), transparent 30%),
+    #050711;
   color: #eef2ff;
   min-height: 100vh;
 }
 
+/* ================= HEADER ================= */
+
 header {
-  padding: 24px 7%;
+  width: 92%;
+  max-width: 1300px;
+  margin: 20px auto 0;
+  padding: 18px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #20263b;
-  background: #0b1020;
+
+  background: rgba(8, 11, 25, 0.78);
+  border: 1px solid #202747;
+  border-radius: 18px;
+
+  backdrop-filter: blur(15px);
+  position: sticky;
+  top: 15px;
+  z-index: 1000;
+
+  box-shadow:
+    0 0 30px rgba(79, 46, 180, 0.08);
 }
 
 .logo {
-  font-size: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 24px;
   font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #2563eb
+  );
+
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.5);
+
+  font-size: 20px;
 }
 
 .logo span {
-  color: #8b5cf6;
+  background: linear-gradient(
+    90deg,
+    #a78bfa,
+    #60a5fa
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
 }
 
 nav a {
-  color: #b8c0d9;
+  color: #9fa9c5;
   text-decoration: none;
-  margin-left: 22px;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
 nav a:hover {
   color: white;
 }
 
+/* ================= HERO ================= */
+
 .hero {
+  width: min(1200px, 92%);
+  margin: auto;
   text-align: center;
-  padding: 75px 20px 45px;
+  padding: 105px 20px 75px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  left: 50%;
+  top: 20px;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.14),
+    transparent 65%
+  );
+
+  pointer-events: none;
+  z-index: -1;
 }
 
 .badge {
-  display: inline-block;
-  padding: 8px 14px;
-  border: 1px solid #3b3565;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 17px;
+
+  border: 1px solid #35305e;
   border-radius: 30px;
-  color: #a78bfa;
-  background: #15122a;
-  margin-bottom: 20px;
+
+  color: #b9a5ff;
+  background: rgba(30, 22, 58, 0.7);
+
+  font-size: 13px;
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 0 25px rgba(124, 58, 237, 0.08);
+}
+
+.badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #8b5cf6;
+
+  box-shadow:
+    0 0 12px #8b5cf6;
 }
 
 h1 {
-  font-size: clamp(40px, 7vw, 72px);
-  line-height: 1.05;
+  font-size: clamp(45px, 8vw, 82px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  font-weight: 850;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #a78bfa,
+    #6366f1,
+    #60a5fa
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-  max-width: 650px;
-  margin: 20px auto;
-  color: #aab3ca;
-  font-size: 18px;
-  line-height: 1.6;
+  max-width: 680px;
+  margin: 25px auto;
+
+  color: #9ba7c2;
+
+  font-size: 17px;
+  line-height: 1.7;
 }
 
-.search {
-  width: min(700px, 90%);
-  margin: 25px auto 0;
+/* ================= HERO BUTTONS ================= */
+
+.hero-buttons {
   display: flex;
-  background: #11172a;
-  border: 1px solid #2a3350;
-  border-radius: 14px;
-  padding: 6px;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
 }
 
-.search input {
-  flex: 1;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  color: white;
-  padding: 15px;
-  font-size: 16px;
-}
+.hero-btn {
+  padding: 13px 22px;
 
-.search button,
-.download {
-  border: 0;
-  border-radius: 10px;
-  padding: 12px 18px;
-  background: #7c3aed;
-  color: white;
-  cursor: pointer;
-  font-weight: 700;
+  border-radius: 11px;
+
   text-decoration: none;
-  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+
+  transition: 0.2s;
 }
 
-.search button:hover,
-.download:hover {
-  background: #6d28d9;
+.primary-btn {
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #4f46e5
+  );
+
+  box-shadow:
+    0 0 25px rgba(124, 58, 237, 0.3);
 }
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 35px rgba(124, 58, 237, 0.5);
+}
+
+.secondary-btn {
+  color: #cbd5f5;
+
+  border: 1px solid #303957;
+  background: #0c1020;
+}
+
+.secondary-btn:hover {
+  border-color: #6d42c5;
+  color: white;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+  width: min(800px, 95%);
+  margin: 45px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid #20263b;
+  border-bottom: 1px solid #20263b;
+
+  padding: 25px 0;
+}
+
+.stat h3 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.stat p {
+  margin: 0;
+  font-size: 12px;
+  color: #727e9c;
+}
+
+/* ================= CONTAINER ================= */
 
 .container {
-  width: min(1100px, 90%);
+  width: min(1150px, 92%);
   margin: auto;
-  padding: 20px 0 70px;
+  padding: 30px 0 80px;
 }
+
+/* ================= SECTION TITLE ================= */
 
 .section-title {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
+  align-items: end;
+
+  margin: 30px 0 22px;
 }
 
 .section-title h2 {
-  font-size: 28px;
+  font-size: 31px;
+  letter-spacing: -1px;
+}
+
+.section-title h2 span {
+  color: #8b5cf6;
 }
 
 .count {
-  color: #8f9ab5;
+  color: #697590;
+  font-size: 13px;
 }
+
+/* ================= SEARCH ================= */
+
+.search {
+  width: min(700px, 95%);
+  margin: 35px auto 0;
+
+  display: flex;
+
+  background: rgba(14, 19, 37, 0.9);
+
+  border: 1px solid #2a3350;
+  border-radius: 14px;
+
+  padding: 6px;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.25);
+
+  transition: 0.2s;
+}
+
+.search:focus-within {
+  border-color: #6845c7;
+
+  box-shadow:
+    0 0 25px rgba(124, 58, 237, 0.12);
+}
+
+.search input {
+  flex: 1;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  color: white;
+
+  padding: 14px 15px;
+
+  font-size: 15px;
+}
+
+.search input::placeholder {
+  color: #697590;
+}
+
+.search button {
+  border: 0;
+  border-radius: 10px;
+
+  padding: 12px 21px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #4f46e5
+  );
+
+  color: white;
+
+  cursor: pointer;
+  font-weight: 700;
+
+  transition: 0.2s;
+}
+
+.search button:hover {
+  transform: translateY(-1px);
+}
+
+/* ================= FILTERS ================= */
 
 .filters {
   display: flex;
-  gap: 10px;
+  gap: 9px;
   flex-wrap: wrap;
-  margin-bottom: 25px;
+
+  margin-bottom: 28px;
 }
 
 .filter {
-  background: #11172a;
-  color: #aeb8d0;
-  border: 1px solid #2a3350;
+  background: #0c1122;
+
+  color: #8995b1;
+
+  border: 1px solid #252e49;
+
   padding: 9px 14px;
+
   border-radius: 20px;
+
   cursor: pointer;
+
+  transition: 0.2s;
 }
 
 .filter.active,
 .filter:hover {
-  background: #25164a;
+  background: #211641;
+
   color: #c4b5fd;
-  border-color: #6d42c5;
+
+  border-color: #6941c6;
+
+  box-shadow:
+    0 0 18px rgba(124, 58, 237, 0.08);
 }
+
+/* ================= PROJECT GRID ================= */
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(270px, 1fr));
+
   gap: 20px;
 }
 
+/* ================= PROJECT CARD ================= */
+
 .card {
-  background: linear-gradient(145deg, #11172a, #0d1221);
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17, 23, 42, 0.95),
+      rgba(8, 12, 26, 0.95)
+    );
+
   border: 1px solid #252d47;
+
   border-radius: 18px;
-  padding: 20px;
-  transition: 0.2s;
+
+  padding: 22px;
+
+  transition:
+    transform 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  right: -60px;
+  top: -60px;
+
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: #6941c6;
+  transform: translateY(-7px);
+
+  border-color: #6743c5;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.3),
+    0 0 25px rgba(124, 58, 237, 0.08);
 }
 
 .icon {
-  font-size: 42px;
-  margin-bottom: 16px;
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.2),
+      rgba(37, 99, 235, 0.12)
+    );
+
+  border: 1px solid #30295a;
+
+  font-size: 29px;
+
+  margin-bottom: 18px;
 }
 
 .card h3 {
-  font-size: 21px;
-  margin-bottom: 9px;
+  font-size: 20px;
+  line-height: 1.35;
+
+  margin-bottom: 10px;
 }
 
 .card p {
-  color: #9da8c0;
-  line-height: 1.5;
+  color: #929db8;
+
+  line-height: 1.55;
+
   margin-bottom: 10px;
+
   white-space: pre-line;
+
+  font-size: 14px;
 }
+
+/* ================= TAGS ================= */
 
 .tags {
   display: flex;
   gap: 7px;
   flex-wrap: wrap;
-  margin: 15px 0;
+
+  margin: 17px 0;
 }
 
 .tag {
-  font-size: 12px;
-  padding: 5px 9px;
-  border-radius: 8px;
-  background: #1b2238;
-  color: #b8c4df;
+  font-size: 11px;
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  background: #171e34;
+
+  color: #aeb8d0;
+
+  border: 1px solid #252e48;
 }
 
-footer {
+/* ================= DOWNLOAD ================= */
+
+.download {
+  display: block;
+
+  width: 100%;
+
   text-align: center;
-  border-top: 1px solid #20263b;
-  padding: 25px;
-  color: #68738d;
+
+  border: 0;
+  border-radius: 10px;
+
+  padding: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition: 0.2s;
 }
+
+.download:hover {
+  box-shadow:
+    0 0 25px rgba(124, 58, 237, 0.35);
+
+  transform: translateY(-1px);
+}
+
+/* ================= EMPTY ================= */
 
 .empty {
   text-align: center;
-  padding: 40px;
+
+  padding: 55px;
+
   color: #8994ac;
+
   display: none;
 }
 
-@media (max-width: 600px) {
+/* ================= FOOTER ================= */
+
+footer {
+  text-align: center;
+
+  border-top: 1px solid #20263b;
+
+  padding: 30px;
+
+  color: #59647d;
+
+  font-size: 13px;
+
+  background: #050711;
+}
+
+footer strong {
+  color: #8b5cf6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+
   header {
-    padding: 20px 5%;
+    width: 94%;
+    padding: 15px 18px;
   }
 
   nav {
@@ -234,68 +645,213 @@ footer {
   }
 
   .hero {
-    padding-top: 55px;
+    padding-top: 75px;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .search {
-    width: 95%;
+    width: 100%;
   }
 
-  .search input {
-    min-width: 0;
+  .search button {
+    padding-left: 15px;
+    padding-right: 15px;
   }
+
+  .section-title {
+    align-items: start;
+    gap: 10px;
+    flex-direction: column;
+  }
+
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
-  <div class="logo">Project<span>Vault</span> 🚀</div>
+
+  <div class="logo">
+
+    <div class="logo-icon">
+      ✦
+    </div>
+
+    Silent<span>_Aura</span>
+
+  </div>
 
   <nav>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
+
+    <a href="#projects">
+      Projects
+    </a>
+
+    <a href="#about">
+      About
+    </a>
+
   </nav>
+
 </header>
+
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-  <div class="badge">MS Office Project Library</div>
+  <div class="badge">
+    Silent_Aura Project Library
+  </div>
 
   <h1>
+
     My Projects.<br>
-    <span style="color:#8b5cf6">Your Downloads.</span>
+
+    <span class="gradient-text">
+      Your Downloads.
+    </span>
+
   </h1>
 
   <p>
-    A simple place to explore and download my Microsoft Office projects.
-    More project categories can be added later.
+
+    Welcome to my personal project library.
+    Explore my Microsoft Office designs, documents,
+    fonts and creative projects — all in one place.
+
   </p>
 
+
+  <div class="hero-buttons">
+
+    <a
+      href="#projects"
+      class="hero-btn primary-btn"
+    >
+      Explore Projects ↓
+    </a>
+
+    <a
+      href="#about"
+      class="hero-btn secondary-btn"
+    >
+      About Silent_Aura
+    </a>
+
+  </div>
+
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <h3 id="totalProjects">
+        0
+      </h3>
+
+      <p>
+        Projects
+      </p>
+
+    </div>
+
+
+    <div class="stat">
+
+      <h3>
+        5+
+      </h3>
+
+      <p>
+        Categories
+      </p>
+
+    </div>
+
+
+    <div class="stat">
+
+      <h3>
+        ∞
+      </h3>
+
+      <p>
+        Creativity
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<main
+  class="container"
+  id="projects"
+>
+
+  <div class="section-title">
+
+    <h2>
+      My <span>Projects</span>
+    </h2>
+
+    <div
+      class="count"
+      id="count"
+    ></div>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
   <div class="search">
+
     <input
       id="search"
       type="text"
       placeholder="Search projects..."
     >
 
-    <button onclick="filterProjects()">
+    <button
+      onclick="filterProjects()"
+    >
       Search
     </button>
+
   </div>
 
-</section>
 
-<main class="container" id="projects">
+  <!-- FILTERS -->
 
-  <div class="section-title">
-    <h2>My Projects</h2>
-    <div class="count" id="count"></div>
-  </div>
-
-  <div class="filters">
+  <div
+    class="filters"
+    style="margin-top:25px;"
+  >
 
     <button
       class="filter active"
@@ -341,19 +897,39 @@ footer {
 
   </div>
 
-  <div class="grid" id="grid"></div>
 
-  <div class="empty" id="empty">
+  <!-- PROJECT CARDS -->
+
+  <div
+    class="grid"
+    id="grid"
+  ></div>
+
+
+  <div
+    class="empty"
+    id="empty"
+  >
     No projects found.
   </div>
 
 </main>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer id="about">
-  © 2026 ProjectVault • Built for sharing projects
+
+  © 2026
+  <strong>Silent_Aura</strong>
+  • My Personal Project Library
+
 </footer>
 
+
 <script>
+
+/* ================= PROJECT DATA ================= */
 
 const projects = [
 
@@ -361,7 +937,8 @@ const projects = [
     name: "Awanzaman Light",
     category: "Fonts",
     icon: "🔤",
-    description: "Awanzaman Light font available as a ZIP download.",
+    description:
+      "Awanzaman Light font available as a ZIP download.",
     file: "awanzaman-light.zip"
   },
 
@@ -369,7 +946,8 @@ const projects = [
     name: "Commercial Script",
     category: "Fonts",
     icon: "✒️",
-    description: "Commercial Script font available for download.",
+    description:
+      "Commercial Script font available for download.",
     file: "CommercialScriptComRegular.TTF"
   },
 
@@ -377,7 +955,8 @@ const projects = [
     name: "Unitext Regular",
     category: "Fonts",
     icon: "🔤",
-    description: "Unitext Regular font available for download.",
+    description:
+      "Unitext Regular font available for download.",
     file: "Unitext-Regular.ttf"
   },
 
@@ -385,132 +964,215 @@ const projects = [
     name: "The Smart School Logo PDF",
     category: "PDF",
     icon: "📕",
-    description: "A high-quality PDF version of The Smart School logo, featuring the official school branding and tagline. Perfect for educational projects, presentations, and school-related designs.",
+    description:
+      "A high-quality PDF version of The Smart School logo, featuring the official school branding and tagline. Perfect for educational projects, presentations, and school-related designs.",
     file: "The Smart School Logo.pdf"
   },
 
   {
-    name: "Designing The Smart School Logo Using Microsoft Word",
+    name:
+      "Designing The Smart School Logo Using Microsoft Word",
+
     category: "Word",
+
     icon: "🏆",
+
     description: `The Smart School Logo is a creative project that I designed using Microsoft Word. This project demonstrates how MS Word can be used not only for writing documents but also for creating attractive and professional designs.
 
 I carefully used Shapes, Text Boxes, Lines, Colors, Fonts, and WordArt to recreate the logo while maintaining a clean and balanced appearance.`,
+
     file: "The Smart School Logo.docx"
   },
 
   {
     name: "The Smart School Banner PDF",
+
     category: "PDF",
+
     icon: "📕",
-    description: "A high-quality PDF version of The Smart School banner, designed using Microsoft Word.",
+
+    description:
+      "A high-quality PDF version of The Smart School banner, designed using Microsoft Word.",
+
     file: "The Smart School Banner.pdf"
   },
 
   {
     name: "The Smart School Banner",
+
     category: "Word",
+
     icon: "🏫",
-    description: "The Smart School banner designed using Microsoft Word with shapes, text, lines, colors, and professional formatting.",
+
+    description:
+      "The Smart School banner designed using Microsoft Word with shapes, text, lines, colors, and professional formatting.",
+
     file: "The Smart School Banner.docx"
   }
 
 ];
 
+
+/* ================= VARIABLES ================= */
+
 let category = "All";
+
+
+/* ================= RENDER ================= */
 
 function render() {
 
-  const q = document
-    .getElementById("search")
-    .value
-    .toLowerCase()
-    .trim();
+  const q =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase()
+      .trim();
 
-  const filtered = projects.filter(p =>
 
-    (category === "All" || p.category === category) &&
+  const filtered =
+    projects.filter(p =>
 
-    (
-      p.name.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q)
-    )
+      (category === "All" ||
+       p.category === category)
 
-  );
+      &&
 
-  document.getElementById("count").textContent =
-    filtered.length +
-    " project" +
-    (filtered.length === 1 ? "" : "s");
+      (
+        p.name
+          .toLowerCase()
+          .includes(q)
 
-  const grid = document.getElementById("grid");
+        ||
 
-  grid.innerHTML = filtered.map(p => `
+        p.description
+          .toLowerCase()
+          .includes(q)
+      )
 
-    <article class="card">
+    );
 
-      <div class="icon">
-        ${p.icon}
-      </div>
 
-      <h3>
-        ${p.name}
-      </h3>
+  /* PROJECT COUNT */
 
-      <p>
-        ${p.description}
-      </p>
+  document
+    .getElementById("count")
+    .textContent =
+      filtered.length +
+      " project" +
+      (filtered.length === 1
+        ? ""
+        : "s");
 
-      <div class="tags">
 
-        <span class="tag">
-          ${p.category}
-        </span>
+  /* TOTAL PROJECTS */
 
-        <span class="tag">
-          MS Office
-        </span>
+  document
+    .getElementById("totalProjects")
+    .textContent =
+      projects.length + "+";
 
-      </div>
 
-      <a
-        class="download"
-        href="${p.file}"
-        ${p.file !== "#" ? "download" : ""}
-      >
-        ⬇ Download
-      </a>
+  /* PROJECT GRID */
 
-    </article>
+  const grid =
+    document.getElementById("grid");
 
-  `).join("");
 
-  document.getElementById("empty").style.display =
-    filtered.length ? "none" : "block";
+  grid.innerHTML =
+    filtered.map(p => `
+
+      <article class="card">
+
+        <div class="icon">
+          ${p.icon}
+        </div>
+
+        <h3>
+          ${p.name}
+        </h3>
+
+        <p>
+          ${p.description}
+        </p>
+
+        <div class="tags">
+
+          <span class="tag">
+            ${p.category}
+          </span>
+
+          <span class="tag">
+            MS Office
+          </span>
+
+        </div>
+
+        <a
+          class="download"
+          href="${p.file}"
+          ${p.file !== "#" ? "download" : ""}
+        >
+          ⬇ Download Project
+        </a>
+
+      </article>
+
+    `).join("");
+
+
+  /* EMPTY MESSAGE */
+
+  document
+    .getElementById("empty")
+    .style.display =
+      filtered.length
+        ? "none"
+        : "block";
 
 }
+
+
+/* ================= CATEGORY ================= */
 
 function setCategory(c, btn) {
 
   category = c;
 
+
   document
     .querySelectorAll(".filter")
-    .forEach(x => x.classList.remove("active"));
+    .forEach(x =>
+      x.classList.remove("active")
+    );
+
 
   btn.classList.add("active");
+
 
   render();
 
 }
+
+
+/* ================= SEARCH ================= */
 
 function filterProjects() {
   render();
 }
 
+
+/* ================= LIVE SEARCH ================= */
+
 document
   .getElementById("search")
-  .addEventListener("input", render);
+  .addEventListener(
+    "input",
+    render
+  );
+
+
+/* ================= START ================= */
 
 render();
 
