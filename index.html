@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 
 <html lang="en">
@@ -280,12 +281,9 @@ footer {
       placeholder="Search projects..."
     >
 
-```
-<button onclick="filterProjects()">
-  Search
-</button>
-```
-
+    <button onclick="filterProjects()">
+      Search
+    </button>
   </div>
 
 </section>
@@ -299,49 +297,47 @@ footer {
 
   <div class="filters">
 
-```
-<button
-  class="filter active"
-  onclick="setCategory('All', this)"
->
-  All
-</button>
+    <button
+      class="filter active"
+      onclick="setCategory('All', this)"
+    >
+      All
+    </button>
 
-<button
-  class="filter"
-  onclick="setCategory('Word', this)"
->
-  📝 Word
-</button>
+    <button
+      class="filter"
+      onclick="setCategory('Word', this)"
+    >
+      📝 Word
+    </button>
 
-<button
-  class="filter"
-  onclick="setCategory('PDF', this)"
->
-  📕 PDF
-</button>
+    <button
+      class="filter"
+      onclick="setCategory('PDF', this)"
+    >
+      📕 PDF
+    </button>
 
-<button
-  class="filter"
-  onclick="setCategory('Fonts', this)"
->
-  🔤 Fonts
-</button>
+    <button
+      class="filter"
+      onclick="setCategory('Fonts', this)"
+    >
+      🔤 Fonts
+    </button>
 
-<button
-  class="filter"
-  onclick="setCategory('Excel', this)"
->
-  📊 Excel
-</button>
+    <button
+      class="filter"
+      onclick="setCategory('Excel', this)"
+    >
+      📊 Excel
+    </button>
 
-<button
-  class="filter"
-  onclick="setCategory('PowerPoint', this)"
->
-  🎞️ PowerPoint
-</button>
-```
+    <button
+      class="filter"
+      onclick="setCategory('PowerPoint', this)"
+    >
+      🎞️ PowerPoint
+    </button>
 
   </div>
 
@@ -365,8 +361,8 @@ const projects = [
     name: "Awanzaman Light",
     category: "Fonts",
     icon: "🔤",
-    description: "Awanzaman Light font available for download.",
-    file: "Awanzaman Light.ttf"
+    description: "Awanzaman Light font available as a ZIP download.",
+    file: "awanzaman-light.zip"
   },
 
   {
@@ -401,12 +397,27 @@ const projects = [
 
 I carefully used Shapes, Text Boxes, Lines, Colors, Fonts, and WordArt to recreate the logo while maintaining a clean and balanced appearance.`,
     file: "The Smart School Logo.docx"
+  },
+
+  {
+    name: "The Smart School Banner PDF",
+    category: "PDF",
+    icon: "📕",
+    description: "A high-quality PDF version of The Smart School banner, designed using Microsoft Word.",
+    file: "The Smart School Banner.pdf"
+  },
+
+  {
+    name: "The Smart School Banner",
+    category: "Word",
+    icon: "🏫",
+    description: "The Smart School banner designed using Microsoft Word with shapes, text, lines, colors, and professional formatting.",
+    file: "The Smart School Banner.docx"
   }
 
 ];
 
 let category = "All";
-
 
 function render() {
 
@@ -432,9 +443,7 @@ function render() {
     " project" +
     (filtered.length === 1 ? "" : "s");
 
-
   const grid = document.getElementById("grid");
-
 
   grid.innerHTML = filtered.map(p => `
 
@@ -476,12 +485,10 @@ function render() {
 
   `).join("");
 
-
   document.getElementById("empty").style.display =
     filtered.length ? "none" : "block";
 
 }
-
 
 function setCategory(c, btn) {
 
@@ -497,16 +504,13 @@ function setCategory(c, btn) {
 
 }
 
-
 function filterProjects() {
   render();
 }
 
-
 document
   .getElementById("search")
   .addEventListener("input", render);
-
 
 render();
 
@@ -514,3 +518,4 @@ render();
 
 </body>
 </html>
+```
