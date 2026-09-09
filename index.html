@@ -2357,6 +2357,54 @@ I carefully used Shapes, Text Boxes, Lines, Colors, Fonts, and WordArt to recrea
     file: "The Smart School Banner.docx"
   }
 ];
+
+function renderProjects(){
+
+  const searchBox = document.getElementById("search");
+  const q = searchBox ? searchBox.value.toLowerCase().trim() : "";
+
+  const filtered = projects.filter(project =>
+    project.name.toLowerCase().includes(q) ||
+    project.description.toLowerCase().includes(q) ||
+    project.category.toLowerCase().includes(q)
+  );
+
+  const grid = document.getElementById("grid");
+  const count = document.getElementById("count");
+  const empty = document.getElementById("empty");
+  const total = document.getElementById("totalProjects");
+
+  if(count){
+    count.textContent = filtered.length +
+      (filtered.length === 1 ? " project" : " projects");
+  }
+
+  if(total){
+    total.textContent = projects.length;
+  }
+
+  if(!grid) return;
+
+  grid.innerHTML = filtered.map((project, index) => `
+    <article class="card shadow-visible" style="transition-delay:${index * 80}ms">
+      <div class="icon">${project.icon}</div>
+      <h3>${project.name}</h3>
+      <p>${project.description}</p>
+      <div class="tags">
+        <span class="tag">${project.category}</span>
+        <span class="tag">Project</span>
+      </div>
+      <a class="download" href="${project.file}" download>
+        ⬇ Download Project
+      </a>
+    </article>
+  `).join("");
+
+  if(empty){
+    empty.style.display = filtered.length ? "none" : "block";
+  }
+}
+
 function setProjects(){
 
   document
