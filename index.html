@@ -2651,6 +2651,14 @@ body.sidebar-closed .sidebar-open{
         About Silent_Aura
       </a>
 
+      <button
+        type="button"
+        class="hero-btn hack-btn"
+        onclick="openFakeTerminal()"
+      >
+        Hack Simulation
+      </button>
+
 
     </div>
 
@@ -3798,6 +3806,235 @@ function openSidebar(){
   );
 
 }
+
+
+
+/* =========================================================
+   FAKE HACKER TERMINAL — ENDLESS VISUAL SIMULATION ONLY
+========================================================= */
+
+let terminalRunning = false;
+let terminalTimer = null;
+
+const fakeTerminalMessages = [
+  {type:"safe", text:"[SIMULATION] Shadow protocol initialized..."},
+  {type:"safe", text:"[SIMULATION] Establishing fictional console link..."},
+  {type:"fake", text:"shadow@silent-aura:~$ scan --visual-only"},
+  {type:"fake", text:"Scanning virtual project sectors: [##########] 100%"},
+  {type:"dim",  text:"  ↳ projects/        status: indexed"},
+  {type:"dim",  text:"  ↳ archive/         status: simulated"},
+  {type:"dim",  text:"  ↳ shadow-core/     status: fictional"},
+  {type:"fake", text:"shadow@silent-aura:~$ access --demo sandbox"},
+  {type:"warn", text:"[DEMO] Access granted to a fake sandbox environment."},
+  {type:"fake", text:"Resolving encrypted-looking tokens... "},
+  {type:"safe", text:"TOKEN:: "},
+  {type:"fake", text:"01001001 01001100 01001100 01010101 01010011 01001001 01001111 01001110"},
+  {type:"fake", text:"shadow@silent-aura:~$ purge --simulation-only"},
+  {type:"warn", text:"[SIMULATION] Pretending to delete virtual cache..."},
+  {type:"safe", text:"virtual_cache.tmp ............. [REMOVED — FAKE]"},
+  {type:"safe", text:"ghost_trace.log ............... [REMOVED — FAKE]"},
+  {type:"safe", text:"shadow_fragment.bin ........... [REMOVED — FAKE]"},
+  {type:"fake", text:"shadow@silent-aura:~$ extract --fictional data"},
+  {type:"dim",  text:"< virtual_data >"},
+  {type:"fake", text:"  ID: SHADOW-" + Math.floor(100000 + Math.random()*899999)},
+  {type:"fake", text:"  KEY: " + Math.random().toString(16).slice(2,10).toUpperCase()},
+  {type:"fake", text:"  STATUS: SIMULATED"},
+  {type:"dim",  text:"</ virtual_data >"},
+  {type:"safe", text:"[SYSTEM] No real device activity detected. Continuing visual loop..."}
+];
+
+function escapeTerminalText(value){
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+function appendTerminalLine(item){
+
+  const output =
+    document.getElementById("terminalOutput");
+
+  if(!output){
+    return;
+  }
+
+  const line =
+    document.createElement("div");
+
+  line.className =
+    "terminal-line " + item.type;
+
+  line.innerHTML =
+    '<span class="prefix">❯</span> ' +
+    escapeTerminalText(item.text);
+
+  output.appendChild(line);
+
+  const cursor =
+    document.createElement("span");
+
+  cursor.className =
+    "terminal-cursor";
+
+  output.appendChild(cursor);
+
+  setTimeout(() => {
+
+    if(cursor.parentNode){
+      cursor.remove();
+    }
+
+  },350);
+
+  while(output.children.length > 90){
+    output.removeChild(output.firstChild);
+  }
+
+  output.scrollTop =
+    output.scrollHeight;
+
+}
+
+function runFakeTerminal(){
+
+  if(!terminalRunning){
+    return;
+  }
+
+  const item =
+    fakeTerminalMessages[
+      Math.floor(
+        Math.random() *
+        fakeTerminalMessages.length
+      )
+    ];
+
+  appendTerminalLine(item);
+
+  const delay =
+    260 +
+    Math.floor(Math.random() * 620);
+
+  terminalTimer =
+    setTimeout(
+      runFakeTerminal,
+      delay
+    );
+
+}
+
+function openFakeTerminal(){
+
+  const overlay =
+    document.getElementById(
+      "terminalOverlay"
+    );
+
+  const output =
+    document.getElementById(
+      "terminalOutput"
+    );
+
+  const status =
+    document.getElementById(
+      "terminalStatus"
+    );
+
+  if(!overlay || !output){
+    return;
+  }
+
+  overlay.classList.add("show");
+
+  overlay.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  if(status){
+    status.textContent =
+      "SIMULATION • RUNNING";
+  }
+
+  if(terminalRunning){
+    return;
+  }
+
+  terminalRunning = true;
+
+  output.innerHTML = "";
+
+  appendTerminalLine({
+    type:"safe",
+    text:"SILENT_AURA SHADOW TERMINAL v1.0"
+  });
+
+  appendTerminalLine({
+    type:"warn",
+    text:"VISUAL DEMO MODE — NOTHING ON THIS COMPUTER IS ACCESSED, READ, DELETED OR CHANGED."
+  });
+
+  terminalTimer =
+    setTimeout(
+      runFakeTerminal,
+      500
+    );
+
+}
+
+function closeFakeTerminal(){
+
+  const overlay =
+    document.getElementById(
+      "terminalOverlay"
+    );
+
+  const status =
+    document.getElementById(
+      "terminalStatus"
+    );
+
+  terminalRunning = false;
+
+  clearTimeout(
+    terminalTimer
+  );
+
+  terminalTimer = null;
+
+  if(status){
+    status.textContent =
+      "SIMULATION • STOPPED";
+  }
+
+  if(overlay){
+
+    overlay.classList.remove(
+      "show"
+    );
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+}
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Escape"){
+
+      closeFakeTerminal();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
