@@ -1511,6 +1511,40 @@ h1{
   display:none;
 
 }
+.project-categories{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:22px 0 25px;
+}
+
+.category-btn{
+  border:1px solid rgba(145,91,255,.28);
+  border-radius:11px;
+  padding:10px 15px;
+  background:rgba(10,7,22,.72);
+  color:#aaa0bb;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:700;
+  transition:.25s;
+  backdrop-filter:blur(10px);
+}
+
+.category-btn:hover{
+  transform:translateY(-2px);
+  color:#fff;
+  border-color:#9b5cff;
+  box-shadow:0 0 25px rgba(139,92,246,.22);
+}
+
+.category-btn.active{
+  color:#fff;
+  border-color:#a96dff;
+  background:linear-gradient(135deg,rgba(103,42,202,.72),rgba(151,48,255,.55));
+  box-shadow:0 0 25px rgba(124,58,237,.28);
+}
+
 .grid{
 
   display:grid;
@@ -1865,6 +1899,15 @@ body.sidebar-closed .sidebar-open{
 }
 
 @media(max-width:760px){
+
+  .project-categories{
+    gap:8px;
+  }
+
+  .category-btn{
+    flex:1 1 calc(50% - 8px);
+    min-width:120px;
+  }
 
   .archive{
 
@@ -2971,7 +3014,17 @@ body.sidebar-closed .computer-dashboard{
     </button>
 
   </div>
-<div
+
+  <div class="project-categories" id="projectCategories">
+    <button class="category-btn active" data-category="All" onclick="setCategory('All')">📁 All</button>
+    <button class="category-btn" data-category="Word" onclick="setCategory('Word')">📝 Word</button>
+    <button class="category-btn" data-category="Excel" onclick="setCategory('Excel')">📊 Excel</button>
+    <button class="category-btn" data-category="PDF" onclick="setCategory('PDF')">📕 PDF</button>
+    <button class="category-btn" data-category="PowerPoint" onclick="setCategory('PowerPoint')">📽️ PowerPoint</button>
+    <button class="category-btn" data-category="Fonts" onclick="setCategory('Fonts')">🔤 Fonts</button>
+  </div>
+
+  <div
     class="grid"
     id="grid"
   ></div>
@@ -2998,6 +3051,14 @@ body.sidebar-closed .computer-dashboard{
 
 <script>
 const projects = [
+  {
+    name: "Menu",
+    category: "Word",
+    icon: "🍽️",
+    description: "A professional menu design project created using Microsoft Word.",
+    file: "Menu.docx"
+  },
+
 
   {
     name: "Awanzaman Light",
@@ -3253,6 +3314,23 @@ function setProjects(){
   const search = document.getElementById("search");
   if(search) search.value = "";
 
+  currentCategory = "All";
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.category === "All");
+  });
+
+  renderProjects();
+}
+
+let currentCategory = "All";
+
+function setCategory(category){
+  currentCategory = category;
+
+  document.querySelectorAll(".category-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.category === category);
+  });
+
   renderProjects();
 }
 
@@ -3261,11 +3339,18 @@ function renderProjects(){
   const searchBox = document.getElementById("search");
   const q = searchBox ? searchBox.value.toLowerCase().trim() : "";
 
-  const filtered = projects.filter(project =>
-    project.name.toLowerCase().includes(q) ||
-    project.description.toLowerCase().includes(q) ||
-    project.category.toLowerCase().includes(q)
-  );
+  const filtered = projects.filter(project => {
+    const matchesCategory =
+      currentCategory === "All" ||
+      project.category.toLowerCase() === currentCategory.toLowerCase();
+
+    const matchesSearch =
+      project.name.toLowerCase().includes(q) ||
+      project.description.toLowerCase().includes(q) ||
+      project.category.toLowerCase().includes(q);
+
+    return matchesCategory && matchesSearch;
+  });
 
   const grid = document.getElementById("grid");
   const count = document.getElementById("count");
